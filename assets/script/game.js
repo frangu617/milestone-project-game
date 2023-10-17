@@ -17,16 +17,6 @@ var keys = {
     down: false,
 };
 
-let enemy = {
-
-    x: 200,
-    y: 200,
-    x_v: 0,
-    y_v: 0,
-    height: 20,
-    width: 20,
-    score: 0,
-};
 
 // let stageWidth = canvas.width;
 // let stageHeight = canvas.height;
@@ -34,8 +24,7 @@ let enemy = {
 let intervalInMilliseconds = 5000;
 
 let enemies = [];
-enemy.width = 20;
-enemy.height = 20;
+
 var friction = 0.5;
 
 function rendercanvas() {
@@ -148,7 +137,17 @@ function renderenemy() {
 }
 
 function spawnEnemy() {
+    let enemy = {
 
+        x: 200,
+        y: 200,
+        x_v: 0,
+        y_v: 0,
+        height: 20,
+        width: 20,
+        score: 0,
+    };
+    
 
     console.log('Spawn a new enemy!');
 
