@@ -1,5 +1,6 @@
 import { ctx } from "./game.js";
-var player = {
+
+export var player = {
     x: 200,
     y: 200,
     x_v: 0,
@@ -9,7 +10,15 @@ var player = {
     score: 0,
     imag: "assets/pngs/blueSquare.png",
 };
-let playerIcon = new Image();
+export var keys = {
+    right: false,
+    left: false,
+    up: false,
+    down: false,
+
+};
+export let playerIcon = new Image();
+playerIcon.src = player.imag;
 // Function to render the player
 export function renderplayer() {
 
