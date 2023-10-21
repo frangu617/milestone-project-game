@@ -1,4 +1,4 @@
-import{ctx, canvas} from "./game.js";
+import{ctx, canvas, isItPaused} from "./game.js";
 import { player } from "./player.js";
 
 export let bullets = [];
@@ -9,6 +9,9 @@ bulletIcon.src = "assets/pngs/purpleTriStar.png";
 
 export function makeBullets() {
 
+    if (isItPaused) {
+        return
+    }
     if (bullets.length < 3) {
 
 

@@ -1,4 +1,4 @@
-import { ctx, canvas,} from "./game.js";
+import { ctx, canvas, isItPaused} from "./game.js";
 import { player } from "./player.js";
 let intervalInMilliseconds = 3000;
 export let enemyIcon = new Image();
@@ -6,6 +6,7 @@ enemyIcon.src = "assets/pngs/orangeTriangle.png";
 export let enemies = [];
 //code refactore from user Rembrandt at https://www.html5gamedevs.com/topic/21551-spawning-enemies/
 export function renderenemy() {
+    
     for (let i = 0; i < enemies.length; i++) {
         let enemyArr = enemies[i];
 
@@ -25,6 +26,9 @@ export function moveEnemy(enemy) {
 
 }
 export function spawnEnemy() {
+    if (isItPaused) {
+        return
+    }
     if (enemies.length < 100) {
         let enemy = {
             x: 0,

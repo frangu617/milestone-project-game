@@ -1,8 +1,9 @@
 import { renderplayer, keydown, keyup } from "./player.js";
-import {player, keys}from "./player.js";
-import { renderenemy,  spawnEnemy,  } from "./enemies.js";
+import { player, keys } from "./player.js";
+import { renderenemy, spawnEnemy, } from "./enemies.js";
 import { renderBullets, getMousePosition, makeBullets, } from "./bulltets.js";
-import {enemyBulletColl, enemyPlayerColl} from "./collision.js";
+import { enemyBulletColl, enemyPlayerColl } from "./collision.js";
+import { movePausedIn, movePausedOut, renderPause } from "./pauseScreen.js";
 //this code was refactored from https://www.educative.io/answers/how-to-make-a-simple-platformer-using-javascript
 
 export function togglePaused() {
@@ -10,16 +11,22 @@ export function togglePaused() {
 }
 
 export let intervalInMilliseconds = 3000;
-export let isItPaused = true;
+export let isItPaused = false;
 function rendercanvas() {
     ctx.fillStyle = 'aquamarine';
     ctx.fillRect(0, 0, 800, 800);
+
+
 }
 
 function loop() {
-    if(isItPaused){
+    if (isItPaused) {
+        movePausedIn()
+        renderPause();
         return
     }
+
+    movePausedOut()
     // If the left key is pressed, move the player to the left
     if (keys.left) {
 
@@ -54,7 +61,8 @@ function loop() {
     renderBullets();
     enemyPlayerColl();
     enemyBulletColl();
-    // requestAnimationFrame(loop);
+
+
 }
 setInterval(spawnEnemy, intervalInMilliseconds);
 setInterval(spawnEnemy, intervalInMilliseconds * 2);
@@ -78,9 +86,9 @@ ctx.canvas.width = 800;
 document.addEventListener("keydown", keydown);
 document.addEventListener("keyup", keyup);
 // Calling loop every 22 milliseconds to update the frame
-if (!isItPaused){
-setInterval(loop, 22);
-loop();
+if (!isItPaused) {
+    setInterval(loop, 22);
+    loop();
 }
 canvas.addEventListener("click", function (e) {
     getMousePosition(canvas, e);
