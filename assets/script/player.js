@@ -1,4 +1,4 @@
-import { ctx } from "./game.js";
+import { ctx, togglePaused} from "./game.js";
 
 export var player = {
     x: 200,
@@ -28,36 +28,38 @@ export function renderplayer() {
 
 export function keydown(e) {
     // 37 is the code for thr left arrow key
-    if (e.keyCode == 37) {
+    if (e.keyCode == 37 || e.keyCode == 65) {
         keys.left = true;
     }
     // 39 is the code for the right arrow key
-    if (e.keyCode == 39) {
+    if (e.keyCode == 39 || e.keyCode == 68) {
         keys.right = true;
     }
     // 38 is the code for the up arrow key
-    if (e.keyCode == 38) {
+    if (e.keyCode == 38 || e.keyCode == 87) {
         keys.up = true;
     }
     // 40 is the code for the down arrow key
-    if (e.keyCode == 40) {
+    if (e.keyCode == 40 || e.keyCode == 83) {
         keys.down = true;
     }
-
+    if(e.keyCode == 80 || e.keyCode == 27){
+        togglePaused();
+    }
 }
 // This function is called when the key is released
 export function keyup(e) {
-    if (e.keyCode == 37) {
+    if (e.keyCode == 37 || e.keyCode == 65) {
         keys.left = false;
     }
-    if (e.keyCode == 39) {
+    if (e.keyCode == 39 || e.keyCode == 68) {
         keys.right = false;
     }
-    if (e.keyCode == 38) {
+    if (e.keyCode == 38 || e.keyCode == 87) {
         keys.up = false;
     }
     // 40 is the code for the down arrow key
-    if (e.keyCode == 40) {
+    if (e.keyCode == 40 || e.keyCode == 83) {
         keys.down = false;
     }
 

@@ -5,15 +5,22 @@ import { renderBullets, getMousePosition, makeBullets, } from "./bulltets.js";
 import {enemyBulletColl, enemyPlayerColl} from "./collision.js";
 //this code was refactored from https://www.educative.io/answers/how-to-make-a-simple-platformer-using-javascript
 
+export function togglePaused() {
+    isItPaused = !isItPaused
+}
 
 export let intervalInMilliseconds = 3000;
-
+export let isItPaused = true;
 function rendercanvas() {
     ctx.fillStyle = 'aquamarine';
     ctx.fillRect(0, 0, 800, 800);
 }
 
 function loop() {
+    if(isItPaused){
+        return
+    }
+    // If the left key is pressed, move the player to the left
     if (keys.left) {
 
         if (player.x > 0 + player.width) {
@@ -52,6 +59,7 @@ function loop() {
 setInterval(spawnEnemy, intervalInMilliseconds);
 setInterval(spawnEnemy, intervalInMilliseconds * 2);
 setInterval(spawnEnemy, intervalInMilliseconds * 2.5);
+
 export function updateScore(num) {
     ctx.clearRect(10, 0, canvas.width - 5, 10);
     ctx.fillStyle = "black";
@@ -62,6 +70,7 @@ export function updateScore(num) {
     ctx.font = "20px Arial";
     ctx.fillText(`Score: ${player.score}`, 10, 20);
 }
+
 export let canvas = document.getElementById("gameCanvas");
 export let ctx = canvas.getContext("2d");
 ctx.canvas.height = 800;
@@ -69,9 +78,10 @@ ctx.canvas.width = 800;
 document.addEventListener("keydown", keydown);
 document.addEventListener("keyup", keyup);
 // Calling loop every 22 milliseconds to update the frame
+if (!isItPaused){
 setInterval(loop, 22);
 loop();
-
+}
 canvas.addEventListener("click", function (e) {
     getMousePosition(canvas, e);
     makeBullets();
