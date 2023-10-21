@@ -1,3 +1,20 @@
+body{
+    display: flex;
+    background-color: black;
+    padding-top: 5vh;
+    align-content: space-around;
+    justify-content: center;
+}
+div{
+    padding:0 40px;
+}
+
+h1{
+    color: white;
+}
+p{
+    color: white;
+}
 canvas {
     
     border: 1px solid black;

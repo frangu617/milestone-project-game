@@ -1,4 +1,4 @@
-import{ctx, canvas, isItPaused} from "./game.js";
+import{ctx, isItPaused, started} from "./game.js";
 import { player } from "./player.js";
 
 export let bullets = [];
@@ -9,7 +9,7 @@ bulletIcon.src = "assets/pngs/purpleTriStar.png";
 
 export function makeBullets() {
 
-    if (isItPaused) {
+    if (isItPaused || !player.alive || !started) {
         return
     }
     if (bullets.length < 3) {
@@ -32,6 +32,9 @@ export function makeBullets() {
             keepGoing: true
 
         }
+        let mySound = new Audio('assets/audio/pew.wav');
+        mySound.volume = 0.3;
+        mySound.play();
         console.log("PEW!");
         bullets.push(bulletObject);
 
@@ -87,4 +90,8 @@ export function moveBullets(bullet) {
     // Update the bullet's position in the direction of the mouse click.
     bullet.x += bullet.velocity.x;
     bullet.y += bullet.velocity.y;
+}
+
+export function emptyBullets() {
+    bullets = [];
 }

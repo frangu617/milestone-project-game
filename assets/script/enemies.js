@@ -1,4 +1,4 @@
-import { ctx, canvas, isItPaused} from "./game.js";
+import { ctx, canvas, isItPaused, started} from "./game.js";
 import { player } from "./player.js";
 let intervalInMilliseconds = 3000;
 export let enemyIcon = new Image();
@@ -26,7 +26,7 @@ export function moveEnemy(enemy) {
 
 }
 export function spawnEnemy() {
-    if (isItPaused) {
+    if (isItPaused || !player.alive || !started) {
         return
     }
     if (enemies.length < 100) {
@@ -80,4 +80,8 @@ export function spawnEnemy() {
         enemies.push(enemy);
         setTimeout(spawnEnemy, intervalInMilliseconds);
     }
+}
+
+export function emptyEnemies() {
+    enemies = [];
 }

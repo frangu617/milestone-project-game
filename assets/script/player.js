@@ -1,4 +1,4 @@
-import { ctx, togglePaused} from "./game.js";
+import { ctx, togglePaused } from "./game.js";
 
 export var player = {
     x: 200,
@@ -9,6 +9,7 @@ export var player = {
     width: 20,
     score: 0,
     imag: "assets/pngs/blueSquare.png",
+    alive: true,
 };
 export var keys = {
     right: false,
@@ -21,9 +22,9 @@ export let playerIcon = new Image();
 playerIcon.src = player.imag;
 // Function to render the player
 export function renderplayer() {
-
-    ctx.drawImage(playerIcon, player.x, player.y, player.width, player.height);
-
+    if (player.alive) {
+        ctx.drawImage(playerIcon, player.x, player.y, player.width, player.height);
+    }
 }
 
 export function keydown(e) {
@@ -43,7 +44,7 @@ export function keydown(e) {
     if (e.keyCode == 40 || e.keyCode == 83) {
         keys.down = true;
     }
-    if(e.keyCode == 80 || e.keyCode == 27){
+    if (e.keyCode == 80 || e.keyCode == 27) {
         togglePaused();
     }
 }
@@ -63,4 +64,17 @@ export function keyup(e) {
         keys.down = false;
     }
 
+}
+
+export function playerDeath() {
+    player.alive = false
+}
+
+export function revive() {
+    player.score = 0;
+    player.alive = true;
+    player.x = 200;
+    player.y = 200;
+    player.x_v = 0;
+    player.y_v = 0;
 }
