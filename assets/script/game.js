@@ -140,6 +140,7 @@ document.addEventListener('keyup', function (e) {
 
 // Calling loop every 22 milliseconds to update the frame
 window.onload = function () {
+    renderGameStart();
     if (!isItPaused) {    
     setInterval(loop, 22);
     loop();
