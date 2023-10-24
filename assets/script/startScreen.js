@@ -10,9 +10,11 @@ let posx = 100;
 
 export function renderGameStart() {
 
-   startIcon.onload(()=>canvas.getContext("2d").drawImage(startIcon, 0,0));
+   
    ctx.clearRect(0, 0, canvas.width, canvas.height);
    ctx.fillStyle = "black";
+   ctx.font = "80px Arial";
+   ctx.fillText(`Survive!`, posx-60, 100);
    ctx.font = "30px Arial";
    ctx.fillText(`Press "Q" to start`, posx, 200);
    ctx.font = "30px Arial";
