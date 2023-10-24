@@ -19,13 +19,13 @@ function getHighScore() {
 export function togglePaused() {
     isItPaused = !isItPaused
 }
-if(getHighScore() == null) {
+if (getHighScore() == null) {
     localStorage.setItem("hiScore", 0);
 }
 let mySound = new Audio('./assets/audio/music-loop.mp3');
 
-    mySound.volume = 0.1;
-    mySound.loop = true;
+mySound.volume = 0.1;
+mySound.loop = true;
 
 export let intervalInMilliseconds = 3000;
 export let isItPaused = false;
@@ -62,7 +62,7 @@ function loop() {
         }
         // If the right key is pressed, move the player to the right
         if (keys.right) {
-            if (player.x < canvas.width-player.width) {
+            if (player.x < canvas.width - player.width) {
                 player.x += 4.5;
             }
         }
@@ -75,11 +75,11 @@ function loop() {
         }
         // If the down key is pressed, move the player down
         if (keys.down) {
-            if (player.y < canvas.height-player.height) {
+            if (player.y < canvas.height - player.height) {
                 player.y += 4.5;
             }
         }
-        if(player.score > getHighScore()){
+        if (player.score > getHighScore()) {
             setHiScore()
         }
         moveGameStartOut();
@@ -95,7 +95,7 @@ function loop() {
         moveGameOverIn();
         renderGameOver();
         addEventListener("keyup", function (e) {
-            
+
             if (e.keyCode === 81) {
 
                 restart()
@@ -139,9 +139,11 @@ document.addEventListener('keyup', function (e) {
 })
 
 // Calling loop every 22 milliseconds to update the frame
-if (!isItPaused) {
+window.onload = function () {
+    if (!isItPaused) {    
     setInterval(loop, 22);
     loop();
+    }
 }
 canvas.addEventListener("click", function (e) {
     getMousePosition(canvas, e);
@@ -150,9 +152,9 @@ canvas.addEventListener("click", function (e) {
 });
 
 function musicStart() {
-    
+
     mySound.play();
 }
-function musicStop(){
+function musicStop() {
     mySound.pause();
 }
