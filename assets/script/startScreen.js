@@ -10,7 +10,7 @@ let posx = 100;
 
 export function renderGameStart() {
 
-   startIcon.onload(()=>ctx.drawImage(startIcon, posx - 70, 30, 400, 100));
+   startIcon.onload(()=>canvas.getContext("2d").drawImage(startIcon, 0,0));
    ctx.clearRect(0, 0, canvas.width, canvas.height);
    ctx.fillStyle = "black";
    ctx.font = "30px Arial";
