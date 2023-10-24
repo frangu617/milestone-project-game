@@ -1,5 +1,4 @@
 import { ctx, canvas, started } from "./game.js";
-import { player } from "./player.js";
 
 let startIcon = new Image();
 startIcon.src = "assets/pngs/title.png";

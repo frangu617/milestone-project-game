@@ -73,9 +73,7 @@ export function moveBullets(bullet) {
         x: bullet.clickPosition.x - bullet.x,
         y: bullet.clickPosition.y - bullet.y
     }
-    m = (bullet.y - bullet.clickPosition.y) / (bullet.x - bullet.clickPosition.x);
-    b = bullet.y - m * bullet.x;
-
+    
     // Normalize the direction vector to make the bullet move at a constant speed. Got this from a comment from Exca on https://www.html5gamedevs.com/topic/36416-bullet-go-on-mouse-position/
     const length = Math.sqrt(direction.x * direction.x + direction.y * direction.y);
     direction.x /= length;

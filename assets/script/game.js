@@ -6,7 +6,7 @@ import { enemyBulletColl, enemyPlayerColl } from "./collision.js";
 import { movePausedIn, movePausedOut, renderPause } from "./pauseScreen.js";
 import { renderGameOver, moveGameOverIn, restart } from "./gameOver.js";
 import { renderGameStart, moveGameStartIn, moveGameStartOut } from "./startScreen.js";
-//this code was refactored from https://www.educative.io/answers/how-to-make-a-simple-platformer-using-javascript
+
 
 function setHiScore() {
     if (player.score > localStorage.getItem("hiScore")) {

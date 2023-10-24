@@ -2,7 +2,7 @@ import{ctx, canvas, updateScore} from "./game.js";
 import{player, playerDeath} from "./player.js";
 import{enemies} from "./enemies.js";
 import{bullets} from "./bulltets.js";
-function collisionCheckRectRect(rectOne, rectTwo) { //taken from https://stackoverflow.com/questions/8017541/javascript-canvas-collision-detection comment from "thatOneGuy"
+function collisionCheckRectRect(rectOne, rectTwo) { //refactored from https://stackoverflow.com/questions/8017541/javascript-canvas-collision-detection comment from "thatOneGuy"
 
     var x1 = rectOne.x, y1 = rectOne.y, height1 = rectOne.height, width1 = rectOne.width;
     var x2 = rectTwo.x, y2 = rectTwo.y, height2 = rectTwo.height, width2 = rectTwo.width;
